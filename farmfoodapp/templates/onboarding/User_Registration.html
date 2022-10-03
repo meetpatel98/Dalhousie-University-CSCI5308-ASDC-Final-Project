@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+<meta charset="utf-8">
+<head>
+    <title>Registration Page</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/montserrat-font.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'css/Registration-style.css' %}"/>
+</head>
+<body class="form-v10">
+<div class="page-content">
+	<h5 style="text-align: center; font-size:35px;">Sign Up!!</h5>
+    <div class="form-v10-content">
+        <form class="form-detail" action="/register-api/" method="POST" id="myform">
+            <div class="form-left">
+                <h2>Personal Infomation</h2>
+                {% if msg %}
+                <center><h3>{{msg}}</h3></center>
+                {% endif %}
+                <div class="form-row">
+                    <div class="form-control">
+                        <select name="title">
+                            <option class="option" value="title">Title</option>
+                            <option class="option" value="mister">Mr.</option>
+                            <option class="option" value="Mistress">Mrs.</option>
+                        </select>
+                        <span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+                    </div>
+                </div>
+                <div class="form-group">
+
+
+                    <div class="form-row form-row-1">
+
+                        <div class="form-control">
+                            <input type="text" name="first_name" id="firstname" class="input-text"
+                                   placeholder="First Name" required>
+
+                        </div>
+
+                    </div>
+                    <div class="form-row form-row-2">
+                        <input type="text" name="last_name" id="lastname" class="input-text" placeholder="Last Name"
+                               required>
+
+                    </div>
+
+
+                </div>
+                <div class="form-row">
+                    <div class="form-control">
+                        <input placeholder="Date Of Birth" class="textbox-n" type="text" onfocus="(this.type='date')"
+                               id="dateOfBirth" name="date_of_birth" required>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-right">
+                <h2>Contact Details</h2>
+                <div class="form-row">
+                    <input type="text" name="email" id="email" class="input-text" required
+                           pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <div class="form-row form-row-1">
+                        <select name="country_code">
+                            <option data-CountryCode="CA" value="1" selected>Canada (+1)</option>
+                            <option data-CountryCode="DZ" value="213">Algeria (+213)</option>
+                            <option data-CountryCode="AD" value="376">Andorra (+376)</option>
+                            <option data-CountryCode="AO" value="244">Angola (+244)</option>
+                            <option data-CountryCode="BG" value="359">Bulgaria (+359)</option>
+                            <option data-CountryCode="IN" value="91">India (+91)</option>
+                            <option data-CountryCode="MX" value="52">Mexico (+52)</option>
+                            <option data-CountryCode="QA" value="974">Qatar (+974)</option>
+                            <option data-CountryCode="SG" value="65">Singapore (+65)</option>
+                            <option data-CountryCode="TH" value="66">Thailand (+66)</option>
+                            <option data-CountryCode="US" value="1">USA (+1)</option>
+                        </select>
+                    </div>
+                    <div class="form-row form-row-2">
+                        <input type="text" name="phone" class="phone" id="phonenumber" placeholder="Phone Number"
+                               required>
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-control">
+                        <input type="password" id="password" name="user_password" placeholder="Password" required/>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-control">
+                        <input type="password" id="password2" name="user_password_cnf" placeholder="Confirm Password" required/>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                </div>
+                <div class="form-row-last">
+                    <button name="signin" type="submit" class="form-submit">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{% static 'js/User_Reg_Validations.js' %}"></script>
+</body>
+</html>

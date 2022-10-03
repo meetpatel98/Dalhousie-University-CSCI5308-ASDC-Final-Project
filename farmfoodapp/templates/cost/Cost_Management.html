@@ -1,0 +1,121 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/inventory-style.css' %}">
+    
+    <link href="{% static 'css/bootstrap_PD.css' %}" rel="stylesheet">
+
+    <title>Cost Management</title>
+
+</head>
+
+<body class="back_color">
+
+    <header class="section-header">
+        <section class="header-main border-bottom bg-dark">
+
+            <div class="container-fluid">
+                <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+                  <div class="col-md-2"><a href="/"><img src="{% static 'Images/Logo_1.png' %}" width="150"></a></div>
+                    <div class="col-md-8">
+                    <form method="POST" action="/search-api/">
+                        <div class="d-flex form-inputs">
+
+                            <input class="form-control" type="text" name="search_query"
+                                   placeholder="Search any product..." required>
+                            <i class="bx bx-search"></i>
+
+                        </div>
+                    </form>
+
+                </div>
+                    <div class="col-md-2">
+                        <ul class="navbar-nav d-flex align-items-center">
+
+                            <div class="dropdown">
+                                <div>
+
+                                    <li class="nav-item">
+                                        <div class="d-flex flex-row"> <img src="{% static 'Images/profile_image.JPG' %}"
+                                                class="rounded-circle" width="70"></div>
+                                    </li>
+                                    <li class="nav-item"> <a href="#" class="nav-link d-flex align-items-center"
+                                            data-abc="true" id="menu1" data-toggle="dropdown"><span>{{first_name}}</span><i
+                                                class='bx bxs-chevron-down'></i></a> </li>
+
+                                </div>
+                                <div class="dropdown-content" style="background-color:salmon;">
+                                    <a href="/add-inventory">Add Inventory</a>
+                                    <a href="/view-inventory">View Inventory</a>
+                                    <a href="/add-product">Add Product </a>
+                                    <a href="/view-products">View Product </a>
+                                    <a href="/logout">Logout</a>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </header>
+
+    <div class="container h-100">
+        <br>
+        <h4 style="text-align: center; font-weight: bold; font-size: xx-large;">Add Costings</h4>
+        </a>
+    </div>
+
+    <form action="/cost-manager/" method="POST">
+
+        <div class="form-group col-lg-4 mt-3 mx-auto">
+            <label for="category" class="control-label">Category</label>
+            <select class="form-control mt-3" id="category" name="category">
+                <option selected>Select category</option>
+                <option value="raw materials">Raw Materials</option>
+                <option value="Equipment">Equipment</option>
+                <option value="vehicles">Vehicles</option>
+                <option value="labour">Labour Wages</option>
+            </select>
+        </div>
+
+        <div class="form-group col-lg-4 mx-auto">
+            <label for="coster" class="control-label mt-3">Cost incurred to:</label>
+           <input type="text" class="form-control mt-3" id="coster" name="coster" required>
+        </div>
+
+        <div class="form-group col-lg-4 mt-3 mx-auto">
+            <label for="expense" class="control-label">Expense</label>
+            <input type="number" class="form-control mt-3" id="expense" min="0" step="0.01" name="expense" placeholder="CAD" required>
+        </div>
+
+
+        <div class="form-group col-lg-4 mx-auto">
+            <!-- Submit Button -->
+            <center><button type="submit" class="btn btn-primary mt-4">Add to Costings</button></center>
+        </div>
+
+    </form>
+
+    <div class="hamburger-menu">
+        <input id="menu__toggle" type="checkbox" />
+        <label class="menu__btn" for="menu__toggle">
+            <span></span>
+        </label>
+<ul class="menu__box">
+        <li><a class="menu__item" href="/dashboard">Dashboard</a></li>
+        <li><a class="menu__item" href="/about">About</a></li>
+        <li><a class="menu__item" href="/blogs">Blogs</a></li>
+        <li><a class="menu__item" href="/logout">Logout</a></li>
+    </ul>
+    </div>
+
+</body>
+
+</html>

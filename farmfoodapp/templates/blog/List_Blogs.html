@@ -1,0 +1,130 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Blog Template · Bootstrap v5.1</title>
+    <link rel="stylesheet" href="{% static 'css/inventory-style.css' %}">
+
+    <link href="{% static 'css/bootstrap_PD.css' %}" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+
+
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="blog.css" rel="stylesheet">
+</head>
+<body class="back_color">
+<header class="section-header">
+    <section class="header-main border-bottom bg-dark">
+
+        <div class="container-fluid">
+            <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+                <div class="col-md-2"><a href="/"><img src="{% static 'Images/Logo_1.png' %}" width="150"></a></div>
+                <div class="col-md-8">
+                    <form method="POST" action="/search-api/">
+                        <div class="d-flex form-inputs">
+
+                            <input class="form-control" type="text" name="search_query"
+                                   placeholder="Search any product..." required>
+                            <i class="bx bx-search"></i>
+
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-md-2">
+                    <ul class="navbar-nav d-flex align-items-center">
+
+                        <div class="dropdown">
+                            <div>
+
+                                <li class="nav-item">
+                                    <div class="d-flex flex-row"><img src="{% static 'Images/profile_image.JPG' %}"
+                                                                      class="rounded-circle" width="70"></div>
+                                </li>
+                                <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center"
+                                                        data-abc="true" id="menu1"
+                                                        data-toggle="dropdown"><span>{{first_name}}</span><i
+                                        class='bx bxs-chevron-down'></i></a></li>
+
+                            </div>
+                            {% if not is_farmer %}
+                            <div class="dropdown-content" style="background-color:salmon;">
+                                <a href="/onboard-vendor">Register as Farmer</a>
+                                <a href="/about">About</a>
+                                <a href="/blogs">Blogs</a>
+                                <a href="/logout">Logout</a>
+                            </div>
+                            {% else %}
+                            <div class="dropdown-content" style="background-color:salmon;">
+                                <a href="/dashboard">Dashboard</a>
+                                <a href="/about">About</a>
+                                <a href="/blogs">Blogs</a>
+                                <a href="/view-inventory">View Inventory</a>
+                                <a href="/view-products">View Products</a>
+                                <a href="/logout">Logout</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</header>
+<br>
+<main class="container" style="background-color: white;">
+
+    <div class="row mb-2">
+        {% for i in data %}
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+
+                    <h3 class="mb-0">{{i.title}}</h3>
+                    <div class="mb-1 text-muted">Date Published - {{i.date_published}}</div>
+                    <strong class="d-inline-block mb-2 text-primary">Author - {{i.author}}</strong>
+                    <a href="/blog/{{i.id}}" class="stretched-link">View Blog</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</main>
+
+</body>
+</html>

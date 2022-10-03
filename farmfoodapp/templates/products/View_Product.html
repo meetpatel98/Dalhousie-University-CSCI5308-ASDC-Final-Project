@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>eCommerce Product Detail</title>
+    <link href="{% static 'css/Product_Description.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap_PD.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="back_color">
+<header class="section-header">
+    <section class="header-main border-bottom bg-dark">
+
+        <div class="container-fluid">
+            <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+                <div class="col-md-2"><a href="/"><img src="{% static 'Images/Logo_1.png' %}" width="150"></a></div>
+               <div class="col-md-8">
+                    <form method="POST" action="/search-api/">
+                        <div class="d-flex form-inputs">
+
+                            <input class="form-control" type="text" name="search_query"
+                                   placeholder="Search any product..." required>
+                            <i class="bx bx-search"></i>
+
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-md-2">
+                    <ul class="navbar-nav d-flex align-items-center">
+
+                        <div class="dropdown">
+                            <div>
+
+                                <li class="nav-item">
+                                    <div class="d-flex flex-row"><img src="{% static 'Images/profile_image.JPG' %}"
+                                                                      class="rounded-circle" width="70"></div>
+                                </li>
+                                <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center"
+                                                        data-abc="true" id="menu1"
+                                                        data-toggle="dropdown"><span>{{first_name}}</span><i
+                                        class='bx bxs-chevron-down'></i></a></li>
+
+                            </div>
+                            {% if not is_farmer %}
+                            <div class="dropdown-content" style="background-color:salmon;">
+                                <a href="/onboard-vendor">Register as Farmer</a>
+                                <a href="/about">About</a>
+                                <a href="/blogs">Blogs</a>
+                                <a href="/logout">Logout</a>
+                            </div>
+                            {% else %}
+                            <div class="dropdown-content" style="background-color:salmon;">
+                                <a href="/dashboard">Dashboard</a>
+                                <a href="/about">About</a>
+                                <a href="/blogs">Blogs</a>
+                                <a href="/view-inventory">View Inventory</a>
+                                <a href="/view-products">View Products</a>
+                                <a href="/logout">Logout</a>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</header>
+
+
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+
+                    <div class="preview-pic tab-content">
+                        <div class="tab-pane active" id="pic-1"><img src="{{image.url}}"/></div>
+                    </div>
+                </div>
+                <div class="details col-md-6">
+                    <h3 class="product-title">{{product_name}}</h3>
+
+                    <p class="product-description">{{description}}</p>
+                    <p class="product-description"><strong>Category</strong>: {{category}}</p>
+
+                    <h4 class="price">current price: <span>${{price}}</span></h4>
+
+                    <h4 class="price">Product Availability: <span>Available</span></h4>
+
+                    <h4 class="price">Vendor Name: <span>{{company_name}}</span></h4>
+                    <h4 class="price">Market: <span>{{market_name}}</span></h4>
+
+                    <h4 class="price">Location: <span>{{location}}</span></h4>
+                    <h4 class="price">Address: <span>{{address}}</span></h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <div class="hamburger-menu">
+        <input id="menu__toggle" type="checkbox" />
+        <label class="menu__btn" for="menu__toggle">
+          <span></span>
+        </label>
+
+       <ul class="menu__box">
+        <li><a class="menu__item" href="/dashboard">Dashboard</a></li>
+        <li><a class="menu__item" href="/about">About</a></li>
+        <li><a class="menu__item" href="/blogs">Blogs</a></li>
+        <li><a class="menu__item" href="/logout">Logout</a></li>
+    </ul>
+    </div>
+
+
+</body>
+</html>

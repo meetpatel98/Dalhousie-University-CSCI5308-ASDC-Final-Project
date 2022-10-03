@@ -1,0 +1,11 @@
+django
+djangorestframework
+flake8
+mysqlclient
+pytz
+pyjwt
+whitenoise
+gunicorn
+dj-database-url
+Pillow
+fuzzywuzzy

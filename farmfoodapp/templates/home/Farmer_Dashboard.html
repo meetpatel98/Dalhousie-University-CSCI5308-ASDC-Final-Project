@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer's Dashboard</title>
+    <!-- CSS only -->
+
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/bootstrap_PD.css' %}" rel="stylesheet">
+
+</head>
+<body class="back_color">
+<header class="section-header">
+    <section class="header-main border-bottom bg-dark">
+
+        <div class="container-fluid">
+            <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+                <div class="col-md-2"><a href="/"><img src="{% static 'Images/Logo_1.png' %}" width="150"></a></div>
+                <div class="col-md-8">
+                    <form method="POST" action="/search-api/">
+                        <div class="d-flex form-inputs">
+
+                            <input class="form-control" type="text" name="search_query"
+                                   placeholder="Search any product..." required>
+                            <i class="bx bx-search"></i>
+
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-md-2">
+                    <ul class="navbar-nav d-flex align-items-center">
+
+                        <div class="dropdown">
+                            <div>
+                                <li class="nav-item">
+                                    <div class="d-flex flex-row"><img src="{% static 'Images/profile_image.JPG' %}"
+                                                                      class="rounded-circle" width="70"></div>
+                                </li>
+                                <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center"
+                                                        data-abc="true" id="menu1" data-toggle="dropdown"><span>{{first_name}}</span><i
+                                        class='bx bxs-chevron-down'></i></a></li>
+                            </div>
+                            <div class="dropdown-content" style="background-color:salmon;">
+                                <a href="/">Home</a>
+                                <a href="/dashboard">Dashboard</a>
+                                <a href="/view-inventory">View Inventory</a>
+                                <a href="/view-products">View Products</a>
+                                <a href="/logout">Logout</a>
+                            </div>
+                        </div>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</header>
+
+
+<form>
+
+
+    <div style="text-align:center; background-image: linear-gradient(to top, #8da3c3, #69b2cb, #54bfbc, #74c698, #adc671); ">
+        <br>
+        <p style="text-align: center; font-size: xx-large;font-family:'Times New Roman', Times, serif;color: black"><b>Welcome,
+            {{first_name}}</b></p>
+        <br>
+        <div>
+            <a href="/add-product">
+                <button type="button" class="badge text-wrap"
+                        style="width: 15rem;height: 5rem; border: 2px solid black; font-size: 1.3em;color: darkblue">
+                    Add Product
+                </button>
+            </a>
+        </div>
+
+        <br>
+
+        <div>
+            <a href="/view-products">
+                <button type="button" class="badge text-wrap"
+                        style="width: 15rem;height: 5rem; border: 2px solid black; font-size: 1.3em;color: darkblue">
+                    View Product
+                </button>
+            </a>
+        </div>
+
+        <br>
+
+        <div>
+            <a href="/add-inventory">
+                <button type="button" class="badge text-wrap"
+                        style="width: 15rem;height: 5rem; border: 2px solid black; font-size: 1.3em;color: darkblue">
+                    Add Inventory
+                </button>
+            </a>
+        </div>
+
+        <br>
+
+        <div>
+            <a href="/view-inventory">
+                <button type="button" class="badge text-wrap"
+                        style="width: 15rem;height: 5rem; border: 2px solid black; font-size: 1.3em;color: darkblue">
+                    View Inventory
+                </button>
+            </a>
+        </div>
+        <br>
+        <div>
+            <a href="/publish-blog">
+                <button type="button" class="badge text-wrap"
+                        style="width: 15rem;height: 5rem; border: 2px solid black; font-size: 1.3em;color: darkblue">
+                    Write Blog
+                </button>
+            </a>
+        </div>
+        <br>
+        <div>
+            <a href="/view-blogs">
+                <button type="button" class="badge text-wrap"
+                        style="width: 15rem;height: 5rem; border: 2px solid black; font-size: 1.3em;color: darkblue">
+                    View My Blogs
+                </button>
+            </a>
+        </div>
+        <br>
+        <div>
+            <a href="/cost-manager">
+                <button type="button" class="badge text-wrap"
+                        style="width: 15rem;height: 5rem; border: 2px solid black; font-size: 1.3em;color: darkblue">
+                    Cost Manager
+                </button>
+            </a>
+        </div>
+        <br>
+        <div>
+            <a href="/view-expenses">
+                <button type="button" class="badge text-wrap"
+                        style="width: 15rem;height: 5rem; border: 2px solid black; font-size: 1.3em;color: darkblue">
+                    View Expenses
+                </button>
+            </a>
+        </div>
+        <br>
+        <div>
+            <a href="/analytics">
+                <button type="button" class="badge text-wrap"
+                        style="width: 15rem;height: 5rem; border: 2px solid black; font-size: 1.3em;color: darkblue">
+                    View Analytics
+                </button>
+            </a>
+        </div>
+
+        <br>
+    </div>
+
+</form>
+
+
+<div class="hamburger-menu">
+    <input id="menu__toggle" type="checkbox"/>
+    <label class="menu__btn" for="menu__toggle">
+        <span></span>
+    </label>
+
+     <ul class="menu__box">
+        <li><a class="menu__item" href="/dashboard">Dashboard</a></li>
+        <li><a class="menu__item" href="/about">About</a></li>
+        <li><a class="menu__item" href="/blogs">Blogs</a></li>
+        <li><a class="menu__item" href="/logout">Logout</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/inventory-style.css' %}">
+    <link href="{% static 'css/bootstrap_PD.css' %}" rel="stylesheet">
+
+    <script src="bootstrap-5.1.3-dist/js/bootstrap.bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <style type="text/css">
+        .tox-statusbar__branding {
+            display: none;
+        }
+
+        .tox-notification__body {
+            display: none;
+        }
+
+        .tox-notifications-container {
+            display: none;
+        }
+
+
+
+    </style>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea#editor',
+            menubar: false
+        });
+
+
+
+    </script>
+
+    <title>Publish Article</title>
+</head>
+
+<body class="back_color">
+
+<header class="section-header">
+    <section class="header-main border-bottom bg-dark">
+
+        <div class="container-fluid">
+            <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+                <div class="col-md-2"><a href="/"><img src="{% static 'Images/Logo_1.png' %}" width="150"></a></div>
+                <div class="col-md-8">
+                    <form method="POST" action="/search-api/">
+                        <div class="d-flex form-inputs">
+
+                            <input class="form-control" type="text" name="search_query"
+                                   placeholder="Search any product..." required>
+                            <i class="bx bx-search"></i>
+
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-md-2">
+                    <ul class="navbar-nav d-flex align-items-center">
+
+                        <div class="dropdown">
+                            <div>
+
+                                <li class="nav-item">
+                                    <div class="d-flex flex-row"><img src="{% static 'Images/profile_image.JPG' %}"
+                                                                      class="rounded-circle" width="70"></div>
+                                </li>
+                                <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center"
+                                                        data-abc="true" id="menu1"
+                                                        data-toggle="dropdown"><span>{{first_name}}</span><i
+                                        class='bx bxs-chevron-down'></i></a></li>
+
+                            </div>
+                            <div class="dropdown-content" style="background-color:salmon;">
+                                <a href="/">Home</a>
+                                <a href="/dashboard">Dashboard</a>
+                                <a href="/view-inventory">View Inventory</a>
+                                <a href="/view-products">View Products</a>
+                                <a href="/logout">Logout</a>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</header>
+
+
+<div class="container h-100">
+    <br>
+    <h4 style="text-align: center; font-weight: bold; font-size: xx-large;">Publish Article</h4>
+    </a>
+</div>
+
+<form method="POST" action="/edit-blog/{{id}}">
+    <div class="container mt-4 mb-4">
+        <div class="row justify-content-md-center">
+            <div class="col-md-12 col-lg-8">
+                <label for="title" class="control-label mt-3">Blog Title</label>
+                <input type="text" class="form-control mt-3" id="title" name="title" value="{{title}}" required>
+                <br>
+            </div>
+            <div class="col-md-12 col-lg-8">
+                <label for="title" class="control-label mt-3">Content</label>
+                <br>
+                <div class="form-group">
+                    <textarea id="editor" name="content">
+                        {{content}}
+                    </textarea>
+                </div>
+                <br>
+                <center>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="hamburger-menu">
+    <input id="menu__toggle" type="checkbox"/>
+    <label class="menu__btn" for="menu__toggle">
+        <span></span>
+    </label>
+
+    <ul class="menu__box">
+        <li><a class="menu__item" href="/dashboard">Dashboard</a></li>
+        <li><a class="menu__item" href="/about">About</a></li>
+        <li><a class="menu__item" href="/blogs">Blogs</a></li>
+        <li><a class="menu__item" href="/logout">Logout</a></li>
+    </ul>
+</div>
+
+
+</body>
+
+</html>
